@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'scanner:create' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for f in form %}
+        <div class="form-group">
+            <label for="projectName">{{f.label}} : </label>
+            {{f}}
+            <small class="d-block">{{f.help_text}}</small>
+        </div><!--end form-group-->
+        {% endfor %}
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
